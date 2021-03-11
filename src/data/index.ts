@@ -1,6 +1,9 @@
-import { Sequelize } from 'sequelize';
+import { Sequelize } from 'sequelize'
 
-const sequelize = new Sequelize('mariadb://localhost:3306/rpc-db?user=root&password=sample')
+// TODO: Move values to environment variables
+const USER = 'root', PASSWORD = 'sample', PORT = '3306'
+
+const sequelize = new Sequelize(`mariadb://localhost:${PORT}/rpc-db?user=${USER}&password=${PASSWORD}`)
 
 sequelize.sync({ force: true });
 

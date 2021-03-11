@@ -1,12 +1,13 @@
 import express from 'express';
 
-import userRouter from './controllers/user.controller'
+import { postFile } from './controllers'
+import makeExpressCallback from './express-callback'
 
 const app = express();
+app.use(express.json());
 const PORT = 8000;
 
-app.get('/', (req, res) => res.send('Hello Casero'));
-app.use('/user', userRouter)
+app.post('/file', makeExpressCallback(postFile));
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);

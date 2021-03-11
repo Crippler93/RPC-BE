@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "tonybaloney.vscode-pets",
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "alefragnani.bookmarks",
+    "coenraads.bracket-pair-colorizer"
+  ]
+}
