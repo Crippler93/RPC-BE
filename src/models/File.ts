@@ -1,20 +1,19 @@
-import { DataTypes } from 'sequelize';
-
-import sequelize from '../data';
+import { DataTypes } from 'sequelize'
+import sequelize from '../data'
 
 const File = sequelize.define('File', {
   name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   type: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   url: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
 })
 
-export default File;
+export default File

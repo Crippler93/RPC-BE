@@ -1,4 +1,4 @@
-export default function makeExpressCallback (controller: any) {
+export default function makeExpressCallback(controller: any) {
   return (req: any, res: any) => {
     const httpRequest = {
       body: req.body,
@@ -11,8 +11,8 @@ export default function makeExpressCallback (controller: any) {
       headers: {
         'Content-Type': req.get('Content-Type'),
         Referer: req.get('referer'),
-        'User-Agent': req.get('User-Agent')
-      }
+        'User-Agent': req.get('User-Agent'),
+      },
     }
     controller(httpRequest)
       .then((httpResponse: any) => {
@@ -22,8 +22,8 @@ export default function makeExpressCallback (controller: any) {
         res.type('json')
         res.status(httpResponse.statusCode).send(httpResponse.body)
       })
-      .catch((e: any) => {
-        res.status(500).send({ error: 'An unkown error occurred.' });
+      .catch(() => {
+        res.status(500).send({ error: 'An unkown error occurred.' })
       })
   }
 }

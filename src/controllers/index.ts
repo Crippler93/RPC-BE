@@ -1,13 +1,11 @@
-import { addFile } from '../use-cases/file';
+import addFile from '../use-cases/file'
 import makePostFile from './post-file'
 
-const postFile = makePostFile({ addFile });
+const postFile = makePostFile({ addFile })
 
 const fileController = Object.freeze({
-  postFile
+  postFile,
 })
 
-export default fileController;
-export {
-  postFile
-}
+export default fileController
+export { postFile }

@@ -1,27 +1,35 @@
-import fs from 'fs/promises';
-import { FileManager } from './types';
+import { FileManager } from './types'
 
-export class FileSystem implements FileManager {
+export default class FileSystem implements FileManager {
+  private fileLib: any
 
-  constructor() {}
-
-  async createFile(destination: string, data: string | Buffer, options: any = {}): Promise<boolean> {
-    try {
-      await fs.writeFile(destination, data, options)
-      return true
-    } catch (error) {
-      return false;
-    }
+  constructor(fileLib: any) {
+    this.fileLib = fileLib
   }
-  async deleteFile(path: string): Promise<boolean> {
+
+  async createFile(
+    destination: string,
+    data: string | Buffer,
+    options: any = {}
+  ): Promise<boolean> {
     try {
-      await fs.unlink(path);
+      await this.fileLib.writeFile(destination, data, options)
       return true
     } catch (error) {
       return false
     }
   }
-  async getFile(path: string, options: any = {}): Promise<Buffer> {
-    return await fs.readFile(path, options)
+
+  async deleteFile(path: string): Promise<boolean> {
+    try {
+      await this.fileLib.unlink(path)
+      return true
+    } catch (error) {
+      return false
+    }
+  }
+
+  getFile(path: string, options: any = {}): Promise<Buffer> {
+    return this.fileLib.readFile(path, options)
   }
 }
