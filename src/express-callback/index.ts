@@ -7,6 +7,7 @@ export default function makeExpressCallback (controller: any) {
       ip: req.ip,
       method: req.method,
       path: req.path,
+      files: req.files,
       headers: {
         'Content-Type': req.get('Content-Type'),
         Referer: req.get('referer'),

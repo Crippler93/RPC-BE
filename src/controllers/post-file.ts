@@ -1,10 +1,10 @@
 export default function makePostFile({addFile}: {addFile: any}) {
   return async function postFile(httpRequest: any) {
     try {
-      const {...fileInfo} = httpRequest.body
-      const posted = await addFile({
-        ...fileInfo
-      })
+      const {file} = httpRequest.files
+      const posted = await addFile(
+        file
+      )
       return {
         headers: {
           'Content-Type': 'application/json',
