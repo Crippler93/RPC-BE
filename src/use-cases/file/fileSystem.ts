@@ -1,3 +1,4 @@
+import path from 'path'
 import { FileManager } from './types'
 
 export default class FileSystem implements FileManager {
@@ -10,9 +11,11 @@ export default class FileSystem implements FileManager {
   async createFile(
     destination: string,
     data: string | Buffer,
-    options: any = {}
+    options: any = {},
   ): Promise<boolean> {
     try {
+      const directoryPath = path.resolve(destination, '..')
+      await this.fileLib.mkdir(directoryPath, { recursive: true })
       await this.fileLib.writeFile(destination, data, options)
       return true
     } catch (error) {
@@ -20,16 +23,16 @@ export default class FileSystem implements FileManager {
     }
   }
 
-  async deleteFile(path: string): Promise<boolean> {
+  async deleteFile(destination: string): Promise<boolean> {
     try {
-      await this.fileLib.unlink(path)
+      await this.fileLib.unlink(destination)
       return true
     } catch (error) {
       return false
     }
   }
 
-  getFile(path: string, options: any = {}): Promise<Buffer> {
-    return this.fileLib.readFile(path, options)
+  getFile(destination: string, options: any = {}): Promise<Buffer> {
+    return this.fileLib.readFile(destination, options)
   }
 }

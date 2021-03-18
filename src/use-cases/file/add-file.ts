@@ -16,7 +16,7 @@ export default function makeAddFile({
     const temporalFile = await fileSystem.getFile(newFile.path)
     const isFileCreated = await fileSystem.createFile(
       path.join(path.resolve('images'), file.getName()),
-      temporalFile
+      temporalFile,
     )
 
     if (!isFileCreated) {
