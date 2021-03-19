@@ -1,5 +1,5 @@
-import buildMakeFile from './File';
+import buildMakeFile from './File'
 
-const makeFile = buildMakeFile({baseURL: 'http://mysite.com'})
+const makeFile = buildMakeFile({ baseURL: 'http://mysite.com' })
 
 export default makeFile

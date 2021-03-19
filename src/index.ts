@@ -1,14 +1,20 @@
-import express from 'express';
+import os from 'os'
+import express from 'express'
+import formData from 'express-form-data'
 
-import { postFile } from './controllers'
-import makeExpressCallback from './express-callback'
+import fileRouter from './routes/file'
 
-const app = express();
-app.use(express.json());
-const PORT = 8000;
+const app = express()
+const PORT = 8000
+const FORM_DATA_OPTIONS = {
+  uploadDir: os.tmpdir(),
+  autoClean: true,
+}
 
-app.post('/file', makeExpressCallback(postFile));
+app.use(express.json())
+
+app.use('/file', formData.parse(FORM_DATA_OPTIONS), fileRouter)
 
 app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
-});
+  console.log(`Server is running at http://localhost:${PORT}`)
+})
