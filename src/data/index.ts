@@ -9,6 +9,6 @@ const sequelize = new Sequelize(
   `mariadb://localhost:${PORT}/rpc-db?user=${USER}&password=${PASSWORD}`
 )
 
-sequelize.sync({ force: true })
+sequelize.sync()
 
 export default sequelize

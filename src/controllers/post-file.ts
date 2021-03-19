@@ -1,29 +1,26 @@
-export default function makePostFile({addFile}: {addFile: any}) {
+export default function makePostFile({ addFile }: { addFile: any }) {
   return async function postFile(httpRequest: any) {
     try {
-      const {file} = httpRequest.files
-      const posted = await addFile(
-        file
-      )
+      const { file } = httpRequest.files
+      const posted = await addFile(file)
       return {
         headers: {
           'Content-Type': 'application/json',
-          'Last-Modified': new Date(posted.modifiedOn).toUTCString()
+          'Last-Modified': new Date(posted.modifiedOn).toUTCString(),
         },
         statusCode: 201,
-        body: { posted }
+        body: { posted },
       }
     } catch (e) {
-      console.log(e);
       return {
         headers: {
-          'Content-Type':  'application/json'
+          'Content-Type': 'application/json',
         },
         statusCode: 400,
         body: {
-          error: e.message
-        }
-      }     
+          error: e.message,
+        },
+      }
     }
   }
 }

@@ -8,6 +8,11 @@ export default class FileSystem implements FileManager {
     this.fileLib = fileLib
   }
 
+  readDirectory(destination: string): Promise<any[]> {
+    const directoryPath = path.resolve('images', destination)
+    return this.fileLib.readdir(directoryPath)
+  }
+
   async createFile(
     destination: string,
     data: string | Buffer,

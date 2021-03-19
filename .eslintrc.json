@@ -32,6 +32,8 @@
         "import/no-unresolved": "off",
         "comma-dangle": "off",
         "no-unused-vars": "off",
+        "implicit-arrow-linebreak": "off",
+        "function-paren-newline": "off",
         "@typescript-eslint/no-unused-vars": "error"
     }
 }

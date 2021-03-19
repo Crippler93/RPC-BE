@@ -15,8 +15,9 @@ export interface FileManager {
   createFile(
     destination: string,
     data: string | Buffer,
-    options?: any
+    options?: any,
   ): Promise<boolean>
   deleteFile(path: string): Promise<boolean>
   getFile(path: string, options?: any): Promise<Buffer>
+  readDirectory(path: string): Promise<any>
 }
