@@ -10,6 +10,15 @@ Install dependencies
 yarn
 ```
 
+## Environment variables 
+
+**.env**
+```
+PORT: Port for express
+PASSWORD: DB password
+USER: DB user
+```
+
 ## Start application
 
 ```
