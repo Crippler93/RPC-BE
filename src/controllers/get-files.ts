@@ -8,7 +8,7 @@ export default function makeGetFiles({ listFiles }: { listFiles: any }) {
           'Content-Type': 'application/json',
         },
         statusCode: 200,
-        body: { files },
+        body: files,
       }
     } catch (e) {
       console.log(e)
