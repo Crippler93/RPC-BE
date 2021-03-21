@@ -14,9 +14,10 @@ yarn
 
 **.env**
 ```
-PORT: Port for express
-PASSWORD: DB password
-USER: DB user
+MYSQL_USER: Connection string user
+MYSQL_PASSWORD: Connection string password
+MYSQL_PORT: Connection string port
+EXPRESS_PORT: Port for express
 ```
 
 ## Start application

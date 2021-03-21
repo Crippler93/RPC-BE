@@ -1,0 +1,20 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "RPC File REST API",
+    "description": "File management for RPC-Apps",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:4200",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Files",
+      "description": "API for files in the system"
+    }
+  ]
+}
