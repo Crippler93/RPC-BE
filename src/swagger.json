@@ -1,0 +1,87 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "RPC File REST API",
+    "description": "File management for RPC-Apps",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:4200",
+  "basePath": "/",
+  "paths": {
+    "/file/{directoryName}": {
+      "get": {
+        "tags": ["Files"],
+        "description": "Returns files names in folder",
+        "summary": "Find all files in a given folder name",
+        "operationId": "getFilesByFolder",
+        "responses": {
+          "200": {
+            "description": "files response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/File"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Folder not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "directoryName",
+          "in": "path",
+          "description": "Name of the folder",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "style": "simple"
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "File": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,10 +2,10 @@ import { Sequelize } from 'sequelize'
 
 import env from '../enviroment'
 
-const { USER, PASSWORD, PORT } = env
+const { MYSQL_USER, MYSQL_PASSWORD, MYSQL_PORT } = env
 
 const sequelize = new Sequelize(
-  `mariadb://localhost:${PORT}/rpc-db?user=${USER}&password=${PASSWORD}`,
+  `mariadb://localhost:${MYSQL_PORT}/rpc-db?user=${MYSQL_USER}&password=${MYSQL_PASSWORD}`,
 )
 
 sequelize.sync()
